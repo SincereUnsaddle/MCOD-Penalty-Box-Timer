@@ -1,0 +1,193 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 0;
+}
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+a {
+	color: black;
+	text-decoration: none;	
+}
+a:hover {
+	text-decoration: underline;
+}
+.table {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+    align-items: center;
+    justify-items: center; /* Neue Zeile hinzugefügt */
+    background-color: white;
+    padding: 20px 0px 20px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+.stopwatch {
+    width: 100%;
+    max-width: 150px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around; /* Ändere von center zu space-between */
+    border: 2px solid black;
+    border-radius: 10px;
+    position: relative;
+    padding: 10px;
+}
+.white {
+    background-color: white;
+    color: black;
+}
+.black {
+    background-color: black;
+    color: white;
+}
+.stopwatch.red.white {
+    background-color: red;
+    color: black;
+}
+.stopwatch.red.black {
+    background-color: red;
+    color: white;
+}
+.stopwatch.green {
+    background-color: green;
+}
+.time {
+    font-size: 1.5em;
+}
+.message {
+    font-size: 1.5em;
+    position: relative;
+    top: 5px;
+    margin-bottom: 10px;
+    height: 20px; /* Add a fixed height to prevent layout shift */
+    line-height: 20px; /* Center the text vertically */
+}
+.controls {
+    display: flex;
+    gap: 16.1%;
+	margin-top: 10px; /* Abstand nach oben hinzufügen */
+	justify-content: space-between;
+	align-items:center;
+}
+.controls button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ec008c;
+    color: black;
+    cursor: pointer;
+    flex-grow: 1;
+    max-width: 70px;
+	font-weight: bold;
+	width: 70px; /* Set a fixed width for the buttons */
+    height: 40px; /* Set a fixed height for the buttons */
+    font-size: 14px; /* Ensure consistent font size */
+    margin: 5px; /* Add some margin to separate buttons */
+}
+}
+.controls button:hover {
+    background-color: grey;
+}
+
+.description {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;         
+    align-items: center;   
+    justify-content: center; 
+    min-height: 100px;          
+}
+.description .white {
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+.description .black {
+    color: white;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid white;
+}
+.footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.7em;
+	font-stretch: condensed;
+	font-style: italic;
+}
+.footer img {
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+}
+@media (max-width: 600px) {
+    .table {
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: repeat(3, auto);
+        padding: 10px 0px 10px 0px;
+        gap: 10px;
+    }
+    .stopwatch {
+        max-width: 100px;
+        min-height: 80px; /* Flexibler auf kleinen Bildschirmen */
+        padding: 5px;
+    }
+    .controls button {
+        max-width: none;
+		flex: 1;
+        font-size: 12px;
+        height: 35px;
+    }
+    .description {
+        font-size: 1em;
+        min-height: 80px; /* Gleiche minimale Höhe wie Stoppuhren auf kleinen Bildschirmen */
+    }
+	.time {
+		font-size: 1.2 em;
+	}
+	.footer img {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.message {
+    font-size: 1em;
+    top: 1px;
+    margin-bottom: 3px;
+    height: 10px; /* Add a fixed height to prevent layout shift */
+    line-height: 10px; /* Center the text vertically */
+}
+}
+.master-button {
+    width: 100%; /* 20px Abstand links und rechts */
+    margin: 10px 20px; /* 10px oben und unten, 20px links und rechts */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    font-size: 1.2em;
+    background-color: #ec008c;
+    color: white;
+    cursor: pointer;
+}
+
+.master-button:hover {
+    background-color: #0056b3;
+}
