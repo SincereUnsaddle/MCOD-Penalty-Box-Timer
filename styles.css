@@ -112,18 +112,24 @@ a:hover {
     justify-content: center; 
     min-height: 100px;          
 }
+div.kreis {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: lightgrey;
+  line-height:100px;
+
+}
+
+
 .description .white {
     color: black;
-    border: 2px solid black;
-    border-radius: 5px;
     padding: 5px;
 }
 .description .black {
     color: white;
     background-color: black;
     padding: 5px;
-    border-radius: 5px;
-    border: 2px solid white;
 }
 .footer {
     margin-top: 10px;
@@ -136,44 +142,6 @@ a:hover {
     width: 50px;
     height: 50px;
     margin-top: 10px;
-}
-@media (max-width: 600px) {
-    .table {
-        grid-template-columns: 1fr auto 1fr;
-        grid-template-rows: repeat(3, auto);
-        padding: 10px 0px 10px 0px;
-        gap: 10px;
-    }
-    .stopwatch {
-        max-width: 100px;
-        min-height: 80px; /* Flexibler auf kleinen Bildschirmen */
-        padding: 5px;
-    }
-    .controls button {
-        max-width: none;
-		flex: 1;
-        font-size: 12px;
-        height: 35px;
-    }
-    .description {
-        font-size: 1em;
-        min-height: 80px; /* Gleiche minimale Höhe wie Stoppuhren auf kleinen Bildschirmen */
-    }
-	.time {
-		font-size: 1.2 em;
-	}
-	.footer img {
-    width: 30px;
-    height: 30px;
-    margin-top: 5px;
-}
-.message {
-    font-size: 1em;
-    top: 1px;
-    margin-bottom: 3px;
-    height: 10px; /* Add a fixed height to prevent layout shift */
-    line-height: 10px; /* Center the text vertically */
-}
 }
 .master-button {
     width: 100%; /* 20px Abstand links und rechts */
@@ -190,4 +158,185 @@ a:hover {
 
 .master-button:hover {
     background-color: #0056b3;
+}
+/* Container for the labels */
+.label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Ensure that the star pseudo-element is positioned relative to this container */
+    margin: 20px 0; /* Add some margin for spacing */
+    text-align: center; /* Center text alignment */
+}
+
+/* Style for the star */ /*
+.label-container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-right: 70px solid transparent;
+    border-bottom: 35px solid yellow;
+    border-left: 70px solid transparent;
+    transform: translate(-50%, -50%) rotate(35deg);
+}
+
+.label-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-right: 70px solid transparent;
+    border-bottom: 35px solid yellow;
+    border-left: 70px solid transparent;
+    transform: translate(-50%, -50%) rotate(-35deg);
+}
+.label::after {
+	content: "";
+    position: absolute;
+    top: 100%;
+    left: 1000%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-right: 70px solid transparent;
+    border-bottom: 35px solid yellow;
+    border-left: 70px solid transparent;
+    transform: translate(-50%, -50%) rotate(-35deg);
+	
+} */
+.label {
+    position: absolute; /* Ensure the label text is positioned relative to its container */
+    z-index: 1; /* Ensure the label text appears above the star */
+    padding: 5px 10px; /* Add some padding for better spacing */
+    border-radius: 5px; /* Optional: Add border-radius for a rounded corner effect */
+    font-size: 20px; /* Increase font size for better readability */
+    background-color: transparent;
+	}
+.star {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 35px solid lightgrey;
+	transform: rotate(0deg);
+}
+.star::before, .star::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 35px solid lightgrey;
+}
+
+.star::before {
+    transform: translateX(-50%) rotate(-75deg);
+}
+
+.star::after {
+    transform: translateX(-50%) rotate(35deg);
+}
+
+@media (max-width: 600px) {
+    .table {
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: repeat(3, auto);
+        padding: 10px 0px 10px 0px;
+        gap: 10px;
+    }
+    .stopwatch {
+        max-width: 100px;
+        min-height: 80px; /* Flexibler auf kleinen Bildschirmen */
+        padding: 5px;
+    }
+	.controls {
+		gap: 5px;
+	}
+    .controls button {
+        flex: 1;
+        font-size: 12px;
+        height: 35px;
+		font-size: 1em;
+		font-weight: normal;
+		min-width: 30px;
+		max-width: 45px;
+		padding: 1px;
+		
+}
+    .description {
+        font-size: 1em;
+        min-height: 80px; /* Gleiche minimale Höhe wie Stoppuhren auf kleinen Bildschirmen */
+    }
+	div.kreis {
+  width: 70px;
+  height: 70px;
+  border-radius: 60px;
+  background-color: lightgrey;
+  line-height:70px;
+  font-size: 1em;
+
+}
+.label {
+    position: absolute; /* Ensure the label text is positioned relative to its container */
+    z-index: 1; /* Ensure the label text appears above the star */
+    padding: 5px 10px; /* Add some padding for better spacing */
+    border-radius: 5px; /* Optional: Add border-radius for a rounded corner effect */
+    font-size: 1em; /* Lower font size for better readability */
+    background-color: transparent;
+	}
+.star {
+    position: relative;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 35px solid lightgrey;
+	transform: rotate(0deg);
+}
+.star::before, .star::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 35px solid lightgrey;
+}
+
+.star::before {
+    transform: translateX(-50%) rotate(-75deg);
+}
+
+.star::after {
+    transform: translateX(-50%) rotate(35deg);
+}
+	.time {
+		font-size: 1.2 em;
+	}
+	.footer img {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.message {
+    font-size: 1em;
+    top: 1px;
+    margin-bottom: 3px;
+    height: 10px; /* Add a fixed height to prevent layout shift */
+    line-height: 10px; /* Center the text vertically */
+}
 }

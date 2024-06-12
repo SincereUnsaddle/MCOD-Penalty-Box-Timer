@@ -165,6 +165,7 @@ function updateMasterButton() {
         masterButton.classList.remove('stop-button');
         masterButton.style.backgroundColor = 'white';
 		masterButton.style.color = 'black';
+		masterButton.style.cursor = 'not-allowed';
         masterButton.disabled = true;
     }
 }
