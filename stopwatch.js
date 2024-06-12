@@ -65,7 +65,7 @@ function toggleStopwatch(id, button) {
                 if (timeRemaining <= 1000) {
                     stopwatch.classList.add('red');
                     messageDiv.textContent = 'Stand Up';
-                    timeDiv.textContent = (timeRemaining / 100).toFixed(1).replace('.', ':');
+                    timeDiv.textContent = (timeRemaining / 100).toFixed(1).replace('.', '"');
                 } else {
                     timeDiv.textContent = Math.ceil(timeRemaining / 100);
                 }
