@@ -241,3 +241,73 @@ div.kreis {
 }
 
 
+@media (max-width: 600px) {
+    .table {
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: repeat(3, auto);
+        padding: 10px 0px 10px 0px;
+        gap: 10px;
+    }
+    .stopwatch {
+        max-width: 100px;
+        min-height: 70px; /* Flexibler auf kleinen Bildschirmen */
+        padding: 0px;
+    }
+	.controls {
+		/* gap: 5px; */
+	}
+    .controls button {
+        flex: 1;
+        font-size: 12px;
+        height: 35px;
+		font-size: 1em;
+		font-weight: normal;
+		min-width: 30px;
+		max-width: 45px;
+		padding: 1px;
+		
+}
+    .description {
+        font-size: 1em;
+        min-height: 70px; /* Gleiche minimale Höhe wie Stoppuhren auf kleinen Bildschirmen */
+		padding:0px;
+    }
+	.description .white {
+		padding:0px;
+	}
+	div.kreis {
+  width: 50px;
+  height: 50px;
+  border-radius: 60px;
+  background-color: lightgrey;
+  line-height:50px;
+  font-size: 1em;
+
+}
+.label {
+    position: absolute; /* Ensure the label text is positioned relative to its container */
+    z-index: 1; /* Ensure the label text appears above the star */
+    padding: 0px 0px; /* Add some padding for better spacing */
+    border-radius: 5px; /* Optional: Add border-radius for a rounded corner effect */
+    font-size: 1em; /* Lower font size for better readability */
+    background-color: transparent;
+	}
+.star {
+	transform: scale(0.2, 0.2) rotate(35deg);
+}
+	.time {
+		font-size: 1.2 em;
+	}
+	.footer img {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+.message {
+    font-size: 1em;
+    top: 1px;
+    margin-bottom: 3px;
+    height: 10px; /* Add a fixed height to prevent layout shift */
+    line-height: 10px; /* Center the text vertically */
+}
+}
