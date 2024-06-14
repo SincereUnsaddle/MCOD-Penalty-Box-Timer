@@ -21,7 +21,7 @@
 </head>
 <body>
 
-    <h1>Rollerderby Penalty Box Timer</h1>
+    <h1>Penalty Box Timer</h1>
 <button id="masterButton" class="master-button" onclick="toggleAllStopwatches()">Start All</button>
 
     <div class="table">
@@ -40,9 +40,27 @@
     </div>
 
     <div class="footer">
-        <p class="footer">made by chatgpt and noma 161 from muscle cats of death.<a href='https://instagram.com/rollerderbygoe/'>instagram: &#64;rollerderbygoe</a></p>
-		<p class="footer">happy birthday danger dyke </p>
-        <a href='https://rollerderbygoe.wordpress.com/'><img src="logo.png" alt="Vereinslogo"></a>
+	<a href='https://rollerderbygoe.wordpress.com/'><img src="logo.png" alt="Vereinslogo"></a>
+        <p class="footer">made by chatgpt and noma 161 from muscle cats of death. <a href='https://instagram.com/rollerderbygoe/'>instagram: &#64;rollerderbygoe</a></p>
+		<div id="settings-icon">&#9881;</div> <p class="footer">happy birthday danger dyke </p> 
+		<div id="settings-menu" class="hidden">
+    <label for="background">Hintergrundfarbe:</label>
+    <select id="background">
+        <option value="white">Weiß</option>
+        <option value="linear-gradient(yellow 25%, white 0 50%, mediumorchid 0 75%, black 0)">enby&#42;</option>
+        <option value="linear-gradient(#00d2ff 20%, #ffa6b9 0 40%, white 0 60%, #ffa6b9 0 80%, #00d2ff 0)">Trans&#42;</option>
+		<option value="radial-gradient(circle, gold 24.5%, darkviolet 25% 34%, gold 34.5%)">Inter&#42;</option>
+        <option value="radial-gradient(circle at 9.75% 50%, #0000 6.66%, darkviolet 6.7% 8.33%, #0000 8.4%),
+    conic-gradient(at 26.66% 50%, #0000 222.75deg, gold 0 317.25deg, #0000 0),
+    conic-gradient(at 33% 50%, #0000 222.75deg, white 0 317.25deg, #0000 0),
+    conic-gradient(at 39% 50%, #0000 222.75deg, #ffa6b9 0 317.25deg, #0000 0),
+    conic-gradient(at 45.66% 50%, #0000 222.75deg, #00d2ff 0 317.25deg, #0000 0),
+    conic-gradient(at 52% 50%, #0000 222.75deg, #753000 0 317.25deg, #0000 0),
+    conic-gradient(at 58.33% 50%, #0000 222.75deg, #000 0 317.25deg, #0000 0),
+    linear-gradient(red 0 16.66%, orange 0 33.33%, yellow 0 50%, green 0 66.66%, blue 0 83.33%, indigo 0)">Progress</option>
+        <option value="linear-gradient(red 0 14.28%, #ff7000 0 28.57%, #f93 0 42.85%, white 0 57.14%, #f5a 0 71.42%, #f49 0 85.71%, #e06 0)">Lesbian</option>
+    </select>
+</div>
     </div>
 
     <script src="./stopwatch.js"></script>

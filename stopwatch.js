@@ -205,3 +205,24 @@ function updateMasterButton() {
         masterButton.disabled = true;
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const settingsIcon = document.getElementById('settings-icon');
+    const settingsMenu = document.getElementById('settings-menu');
+    const backgroundSelect = document.getElementById('background');
+
+    // Toggle visibility of settings menu
+    settingsIcon.addEventListener('click', function() {
+        if (settingsMenu.classList.contains('hidden')) {
+            settingsMenu.classList.remove('hidden');
+            settingsMenu.classList.add('visible');
+        } else {
+            settingsMenu.classList.remove('visible');
+            settingsMenu.classList.add('hidden');
+        }
+    });
+
+    // Change background color
+    backgroundSelect.addEventListener('change', function() {
+        document.body.style.background = backgroundSelect.value;
+    });
+});
