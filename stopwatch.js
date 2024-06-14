@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         stopwatch.innerHTML = `
             <div class="message"></div>
-            <div class="time">30</div>
+            <div class="time-container">
+                <div class="time">30</div>
+                <button class="add-time-button" onclick="addTime('${sw.id}', 30)">+</button>
+            </div>
             <div class="controls">
                 <button class="start-button" onclick="toggleStopwatch('${sw.id}', this)">Start</button>
                 <button class="reset-button" onclick="resetStopwatch('${sw.id}')">Reset</button>
@@ -34,8 +37,19 @@ function toggleStopwatch(id, button) {
 
     if (!intervals[id]) { // Timer is not running
         let startTime = Date.now();
-        let timeRemaining = remainingTimes[id] !== undefined ? remainingTimes[id] : parseFloat(timeDiv.textContent) * 100;
-
+		if (id=='whiteJammer'&&remainingTimes['blackJammer']){ //update jammer time if jammer is in the box
+			remainingTimes['whiteJammer']=3000+(-remainingTimes['blackJammer']%3000);
+			resetStopwatch('blackJammer');
+		}
+		if (id=='blackJammer'&&remainingTimes['whiteJammer']){
+			remainingTimes['blackJammer']=3000+(-remainingTimes['whiteJammer']%3000);
+			resetStopwatch('whiteJammer');
+		}
+		
+        if (!remainingTimes[id]) {
+			remainingTimes[id] = parseFloat(timeDiv.textContent) * 100;
+		}
+		
         intervals[id] = setInterval(update, 10);
 
         button.textContent = 'Stop';
@@ -44,10 +58,10 @@ function toggleStopwatch(id, button) {
         function update() {
             const currentTime = Date.now();
             const elapsed = (currentTime - startTime) / 10; // Convert to hundredths of a second
-            timeRemaining -= elapsed;
+            remainingTimes[id] -= elapsed;
 
-            if (timeRemaining <= 0) {
-                timeRemaining = 0;
+            if (remainingTimes[id] <= 0) {
+                remainingTimes[id] = 0;
                 messageDiv.textContent = 'Go';
                 stopwatch.classList.remove('red');
                 stopwatch.classList.add('green');
@@ -62,17 +76,16 @@ function toggleStopwatch(id, button) {
 
                 updateMasterButton(); // Ensure the master button state is updated
             } else {
-                if (timeRemaining <= 1000) {
+                if (remainingTimes[id] <= 1000) {
                     stopwatch.classList.add('red');
                     messageDiv.textContent = 'Stand Up';
-                    timeDiv.textContent = (timeRemaining / 100).toFixed(1).replace('.', '"');
+                    timeDiv.textContent = (remainingTimes[id] / 100).toFixed(1).replace('.', '"');
                 } else {
-                    timeDiv.textContent = Math.ceil(timeRemaining / 100);
+                    timeDiv.textContent = Math.ceil(remainingTimes[id] / 100);
                 }
             }
 
             startTime = currentTime;
-            remainingTimes[id] = timeRemaining;
         }
     } else { // Timer is running
         clearInterval(intervals[id]);
@@ -83,6 +96,30 @@ function toggleStopwatch(id, button) {
     }
 
     updateMasterButton(); // Update the master button state
+}
+
+function addTime(id, seconds) {
+    const stopwatch = document.getElementById(id);
+    const timeDiv = stopwatch.querySelector('.time');
+    const messageDiv = stopwatch.querySelector('.message');
+
+    if (!remainingTimes[id]) {
+        remainingTimes[id] = parseFloat(timeDiv.textContent) * 100;
+    }
+
+    remainingTimes[id] += seconds * 100;
+	
+	messageDiv.textContent = '';
+    stopwatch.classList.remove('red');
+
+    if (!intervals[id]) {
+        // If the timer is not running, update the display immediately
+        if (remainingTimes[id] <= 1000) {
+            timeDiv.textContent = (remainingTimes[id] / 100).toFixed(1).replace('.', ':');
+        } else {
+            timeDiv.textContent = Math.ceil(remainingTimes[id] / 100);
+        }
+    }
 }
 
 function resetStopwatch(id) {
@@ -121,7 +158,7 @@ function toggleAllStopwatches() {
         // Start all stopped stopwatches that are not on initial value
         document.querySelectorAll('.stopwatch').forEach(sw => {
             const startButton = sw.querySelector('.start-button');
-            if (startButton.textContent === 'Start' && sw.querySelector('.time').textContent !== '30') {
+            if (startButton.textContent === 'Start' && remainingTimes[sw.id]) {
                 toggleStopwatch(sw.id, startButton);
             }
         });
@@ -146,8 +183,7 @@ function toggleAllStopwatches() {
 function updateMasterButton() {
     const masterButton = document.getElementById('masterButton');
     const anyRunning = Object.keys(intervals).length > 0;
-    const anyStopped = Array.from(document.querySelectorAll('.stopwatch .start-button'))
-        .some(button => button.textContent === 'Start' && button.closest('.stopwatch').querySelector('.time').textContent !== '30');
+    const anyStopped = Object.keys(remainingTimes).length > 0;
 
     if (anyRunning) {
         masterButton.textContent = 'Stop';
@@ -158,14 +194,14 @@ function updateMasterButton() {
         masterButton.textContent = 'Continue';
         masterButton.classList.remove('stop-button');
         masterButton.style.backgroundColor = 'black';
-		masterButton.style.color = 'white';
+        masterButton.style.color = 'white';
         masterButton.disabled = false;
     } else {
         masterButton.textContent = 'Empty Box';
         masterButton.classList.remove('stop-button');
         masterButton.style.backgroundColor = 'white';
-		masterButton.style.color = 'black';
-		masterButton.style.cursor = 'not-allowed';
+        masterButton.style.color = 'black';
+        masterButton.style.cursor = 'not-allowed';
         masterButton.disabled = true;
     }
 }

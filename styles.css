@@ -46,6 +46,10 @@ a:hover {
     position: relative;
     padding: 10px;
 }
+.time-container {
+    display: flex;
+    align-items: center;
+}
 .white {
     background-color: white;
     color: black;
@@ -67,6 +71,26 @@ a:hover {
 }
 .time {
     font-size: 1.5em;
+	margin-right: 10px;
+}
+
+.add-time-button {
+	
+	position: absolute;
+    font-size: 1em;
+	padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ec008c;
+    color: black;
+    cursor: pointer;
+	
+}
+.black .add-time-button {
+	left: 10px;
+}
+.white .add-time-button {
+	right: 10px;
 }
 .message {
     font-size: 1.5em;
@@ -78,7 +102,7 @@ a:hover {
 }
 .controls {
     display: flex;
-    gap: 16.1%;
+    /* gap: 16.1%; */
 	margin-top: 10px; /* Abstand nach oben hinzufügen */
 	justify-content: space-between;
 	align-items:center;
@@ -113,11 +137,11 @@ a:hover {
     min-height: 100px;          
 }
 div.kreis {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50px;
   background-color: lightgrey;
-  line-height:100px;
+  line-height:80px;
 
 }
 
@@ -169,49 +193,6 @@ div.kreis {
     margin: 20px 0; /* Add some margin for spacing */
     text-align: center; /* Center text alignment */
 }
-
-/* Style for the star */ /*
-.label-container::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    border-right: 70px solid transparent;
-    border-bottom: 35px solid yellow;
-    border-left: 70px solid transparent;
-    transform: translate(-50%, -50%) rotate(35deg);
-}
-
-.label-container::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    border-right: 70px solid transparent;
-    border-bottom: 35px solid yellow;
-    border-left: 70px solid transparent;
-    transform: translate(-50%, -50%) rotate(-35deg);
-}
-.label::after {
-	content: "";
-    position: absolute;
-    top: 100%;
-    left: 1000%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    border-right: 70px solid transparent;
-    border-bottom: 35px solid yellow;
-    border-left: 70px solid transparent;
-    transform: translate(-50%, -50%) rotate(-35deg);
-	
-} */
 .label {
     position: absolute; /* Ensure the label text is positioned relative to its container */
     z-index: 1; /* Ensure the label text appears above the star */
@@ -221,33 +202,44 @@ div.kreis {
     background-color: transparent;
 	}
 .star {
-    position: relative;
-    width: 0;
-    height: 0;
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-bottom: 35px solid lightgrey;
-	transform: rotate(0deg);
+ --star-color:lightgray;
+ font-size:10em;
+ position: absolute;
+ display: block;
+ width: 0px;
+ height: 0px;
+ border-right: 1em solid transparent;
+ border-bottom: 0.7em solid var(--star-color);
+ border-left: 1em solid transparent;
+ transform: scale(0.3, 0.3) rotate(35deg);
 }
-.star::before, .star::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-left: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-bottom: 35px solid lightgrey;
+.star:before {
+ border-bottom: 0.8em solid var(--star-color);
+ border-left: 0.3em solid transparent;
+ border-right: 0.3em solid transparent;
+ position: absolute;
+ height: 0;
+ width: 0;
+ top: -0.45em;
+ left: -0.65em;
+ display: block;
+ content:"";
+ transform: rotate(-35deg);
+}
+.star:after {
+ position: absolute;
+ display: block;
+ top: 0.03em;
+ left: -1.05em;
+ width: 0;
+ height: 0;
+ border-right: 1em solid transparent;
+ border-bottom: 0.7em solid var(--star-color);
+ border-left: 1em solid transparent;
+ transform: rotate(-70deg);
+ content:"";
 }
 
-.star::before {
-    transform: translateX(-50%) rotate(-75deg);
-}
-
-.star::after {
-    transform: translateX(-50%) rotate(35deg);
-}
 
 @media (max-width: 600px) {
     .table {
@@ -262,7 +254,7 @@ div.kreis {
         padding: 5px;
     }
 	.controls {
-		gap: 5px;
+		/* gap: 5px; */
 	}
     .controls button {
         flex: 1;
