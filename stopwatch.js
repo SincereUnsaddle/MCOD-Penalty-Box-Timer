@@ -230,8 +230,7 @@ function saveSettings() {
     const team2Color = document.getElementById('team2-color').value;
 	const team1Font = document.getElementById('team1fontColor').value;
     const team2Font = document.getElementById('team2fontColor').value;
-    const penaltyDuration = parseInt(document.getElementById('penalty-duration').value); /*
-    const soundOption = document.getElementById('sound-option').checked; */
+    const penaltyDuration = parseInt(document.getElementById('penalty-duration').value); 
 	const settingsMenu = document.getElementById('settings-menu');
 	
 	
@@ -243,6 +242,7 @@ function saveSettings() {
         stopwatches.forEach(timeDiv => {
             const newTime = 30 * timeMultiplier;
             timeDiv.textContent = newTime;
+			
         });
 
         // Update remainingTimes to reflect the new timeMultiplier
@@ -252,7 +252,8 @@ function saveSettings() {
             }
         }
     }
-	document.body.style.background = background;
+	
+	document.getElementById("tbl").style.background = background;
 	document.documentElement.style.setProperty('--team1Color', team1Color);
     document.documentElement.style.setProperty('--team2Color', team2Color);
 	document.documentElement.style.setProperty('--team1fontColor', team1Font);
@@ -260,31 +261,30 @@ function saveSettings() {
 	document.getElementById("settings-menu").style.width = "0%";
 	
 	
-	
-    /*setupStopwatches();
-    localStorage.setItem('penaltyBoxSettings', JSON.stringify({
-        background,
-        team1Color,
-        team2Color,
-        penaltyDuration,
-        soundOption
-    }));*/
-    
+
 	
 	 
 }
 
-/* Open when someone clicks on the span element */
+
 function openNav() {
 	const background = document.getElementById('background');
     const team1Color = document.getElementById('team1-color');
     const team2Color = document.getElementById('team2-color');
 	const team1Font = document.getElementById('team1fontColor');
     const team2Font = document.getElementById('team2fontColor');
-    const penaltyDuration = parseInt(document.getElementById('penalty-duration').value); /*
-    const soundOption = document.getElementById('sound-option').checked; */
+    const penaltyDuration = parseInt(document.getElementById('penalty-duration').value); 
 	const settingsMenu = document.getElementById('settings-menu');
-
+	document.getElementById("settings-tbl").style.background = background.value;
+	document.getElementById("team1col").style.background = team1Color.value;
+	document.getElementById("team1fon").style.background = team1Color.value;
+	document.getElementById("team2col").style.background = team2Color.value;
+	document.getElementById("team2fon").style.background = team2Color.value;
+	document.getElementById("team1fon").style.color = team1Font.value;
+	document.getElementById("team2fon").style.color = team2Font.value;
+	document.getElementById("team1col").style.color = team1Font.value;
+	document.getElementById("team2col").style.color = team2Font.value;
+	
  settingsMenu.style.width = "100%";
   background.addEventListener('change', function() {
         document.getElementById("settings-tbl").style.background = background.value;

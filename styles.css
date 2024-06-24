@@ -208,7 +208,7 @@ h1 {
 
 /* Star styles */
 .star {
-    --star-color: lightgray;
+    --star-color: #f0f0f0;
     border-bottom: 0.7em solid var(--star-color);
     border-left: 1em solid transparent;
     border-right: 1em solid transparent;
@@ -216,7 +216,7 @@ h1 {
     font-size: 10em;
     height: 0px;
     position: absolute;
-    transform: scale(0.2, 0.2) rotate(35deg);
+    transform: scale(0.3, 0.3) rotate(35deg);
     width: 0px;
 }
 
@@ -251,7 +251,7 @@ h1 {
 /* Main table styling */
 .table {
     align-items: center;
-    background-color: transparent;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: grid;
@@ -332,6 +332,14 @@ h1 {
     color: white;
 	color: var(--team2fontColor);
 }
+div.kreis {
+        background-color: #f0f0f0;
+        border-radius: 60px;
+        font-size: 1em;
+        height: 60px;
+        line-height: 60px;
+        width: 60px;
+    }
 
 /* Responsive styles  */
 @media (max-width: 600px) {
@@ -364,7 +372,7 @@ h1 {
     .description .white {
         padding: 1px;
     }
-
+*/
     div.kreis {
         background-color: lightgrey;
         border-radius: 60px;
@@ -372,7 +380,7 @@ h1 {
         height: 50px;
         line-height: 50px;
         width: 50px;
-    } */
+    } 
 
     .footer img {
         height: 50px;
