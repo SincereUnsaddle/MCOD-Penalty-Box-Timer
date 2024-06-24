@@ -1,254 +1,164 @@
+/* Main body styling */
 body {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    padding: 20px;
-    margin: 0;
-}
-h1 {
-    font-size: 1em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-a {
-	color: black;
-	text-decoration: none;	
-}
-a:hover {
-	text-decoration: underline;
-}
-.table {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-rows: repeat(3, auto);
-    gap: 20px;
-    align-items: center;
-    justify-items: center; /* Neue Zeile hinzugefügt */
-    background-color: white;
-    padding: 20px 0px 20px 0px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-}
-.stopwatch {
-    width: 100%;
-    max-width: 150px;
-    min-height: 100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around; /* Ändere von center zu space-between */
-    border: 2px solid black;
-    border-radius: 10px;
-    position: relative;
-    padding: 10px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
-.time-container {
-    display: flex;
-    align-items: center;
+:root {
+
+--team1Color: white;
+--team2Color: black;
+--team1fontColor: black;
+--team2fontColor: white;
 }
-.white {
-    background-color: white;
+/* Hyperlink styles */
+a {
     color: black;
-}
-.black {
-    background-color: black;
-    color: white;
-}
-.stopwatch.red.white {
-    background-color: red;
-    color: black;
-}
-.stopwatch.red.black {
-    background-color: red;
-    color: white;
-}
-.stopwatch.green {
-    background-color: green;
-}
-.time {
-    font-size: 1.5em;
-	margin-right: 10px;
+    text-decoration: none;
 }
 
-.add-time-button {
-	
-	position: absolute;
+a:hover {
+    text-decoration: underline;
+}
+
+/* Main heading style */
+h1 {
     font-size: 1em;
-	padding: 5px;
+    text-align: center;
+}
+
+/* Add time button styles 
+.add-time-button {
+    background-color: #ec008c;
     border: none;
     border-radius: 5px;
-    background-color: #ec008c;
     color: black;
     cursor: pointer;
-	
+    font-size: 0.9em;
+    padding: 0.3em;
+    position: absolute;
+} 
+.add-time-button:hover {
+    background-color: grey;
+	color:white;
 }
+
 .black .add-time-button {
-	left: 10px;
+    left: 10px;
 }
+
 .white .add-time-button {
-	right: 10px;
+    right: 10px;
 }
-.message {
-    font-size: 1.5em;
-    position: relative;
-    top: 5px;
-    margin-bottom: 10px;
-    height: 20px; /* Add a fixed height to prevent layout shift */
-    line-height: 20px; /* Center the text vertically */
-}
+*/
+/* Controls section */
 .controls {
+    align-items: center;
     display: flex;
-    /* gap: 16.1%; */
-	margin-top: 10px; /* Abstand nach oben hinzufügen */
-	justify-content: space-between;
-	align-items:center;
+    justify-content: space-between;
+    margin-top: 0px;
 }
+
+/* Control buttons */
 .controls button {
-    padding: 5px;
+    background-color: #ec008c;
     border: none;
     border-radius: 5px;
-    background-color: #ec008c;
     color: black;
     cursor: pointer;
     flex-grow: 1;
-    max-width: 70px;
-	font-weight: bold;
-	width: 70px; /* Set a fixed width for the buttons */
-    height: 40px; /* Set a fixed height for the buttons */
-    font-size: 14px; /* Ensure consistent font size */
-    margin: 5px; /* Add some margin to separate buttons */
+    font-size: 0.9em;
+    height: 2em;
+    margin: 0.2em;
+	padding:0.3em;
+    max-width: 80px;  /* größe der buttons mit add time button und stopwatch abstimmen */
+    
 }
-}
+
 .controls button:hover {
     background-color: grey;
+	color:white;
 }
 
+/* Description section */
 .description {
-    text-align: center;
-    font-size: 1.2em;
+    align-items: center;
+    display: flex;
+    font-size: 1em;
     font-weight: bold;
-    display: flex;         
-    align-items: center;   
-    justify-content: center; 
-    min-height: 100px;          
-}
-div.kreis {
-  width: 80px;
-  height: 80px;
-  border-radius: 50px;
-  background-color: lightgrey;
-  line-height:80px;
-
-}
-
-
-.description .white {
-    color: black;
-    padding: 5px;
-}
-.description .black {
-    color: white;
-    background-color: black;
-    padding: 5px;
-}
-.footer {
-    margin-top: 10px;
+    justify-content: center;
+    max-height: 100px;
     text-align: center;
-    font-size: 0.7em;
-	font-stretch: condensed;
-	font-style: italic;
-}
-.footer img {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
-}
-.master-button {
-    width: 100%; /* 20px Abstand links und rechts */
-    margin: 10px 20px; /* 10px oben und unten, 20px links und rechts */
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    font-size: 1.2em;
-    background-color: #ec008c;
-    color: white;
-    cursor: pointer;
 }
 
-.master-button:hover {
-    background-color: #0056b3;
+
+
+
+/* Footer section */
+.footer {
+    font-size: 0.7em;
+    font-stretch: condensed;
+    font-style: italic;
+    margin-top: 0px;
+    text-align: center;
 }
-/* Container for the labels */
+
+.footer img {
+    height: 100px;
+    margin-top: 2px;
+    width: 100px;
+}
+
+/* Label container */
 .label-container {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: relative; /* Ensure that the star pseudo-element is positioned relative to this container */
-    margin: 20px 0; /* Add some margin for spacing */
-    text-align: center; /* Center text alignment */
-}
-.label {
-    position: absolute; /* Ensure the label text is positioned relative to its container */
-    z-index: 1; /* Ensure the label text appears above the star */
-    padding: 5px 10px; /* Add some padding for better spacing */
-    border-radius: 5px; /* Optional: Add border-radius for a rounded corner effect */
-    font-size: 20px; /* Increase font size for better readability */
-    background-color: transparent;
-	}
-.star {
- --star-color:lightgray;
- font-size:10em;
- position: absolute;
- display: block;
- width: 0px;
- height: 0px;
- border-right: 1em solid transparent;
- border-bottom: 0.7em solid var(--star-color);
- border-left: 1em solid transparent;
- transform: scale(0.3, 0.3) rotate(35deg);
-}
-.star:before {
- border-bottom: 0.8em solid var(--star-color);
- border-left: 0.3em solid transparent;
- border-right: 0.3em solid transparent;
- position: absolute;
- height: 0;
- width: 0;
- top: -0.45em;
- left: -0.65em;
- display: block;
- content:"";
- transform: rotate(-35deg);
-}
-.star:after {
- position: absolute;
- display: block;
- top: 0.03em;
- left: -1.05em;
- width: 0;
- height: 0;
- border-right: 1em solid transparent;
- border-bottom: 0.7em solid var(--star-color);
- border-left: 1em solid transparent;
- transform: rotate(-70deg);
- content:"";
+    position: relative;
+    text-align: center;
 }
 
+/* Labels */
+.label {
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 0px 0px;
+    position: absolute;
+    z-index: 1;
+}
+
+/* Master button styles */
+.master-button {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    font-size: 1em;
+    margin: 5px 0px;
+    max-width: 600px;
+    padding: 0.3em;
+    width: 100%;
+}
+
+
+/* Settings icon and menu */
 #settings-icon {
-    font-size: 24px;
-    margin-left: 10px;
     cursor: pointer;
+    font-size: 2em;
+    margin-left: 0px;
 }
 
 #settings-menu {
-    display: none;
-    margin-top: 10px;
+    margin-top: 0px;
+    font-size: 0.8em;
+	padding: 0px;
+    margin-top: 0px;
+    text-align: center;
+	width:0%;
 }
 
 #settings-menu.hidden {
@@ -258,78 +168,254 @@ div.kreis {
 #settings-menu.visible {
     display: block;
 }
-@media (max-width: 600px) {
-	#settings-icon {
-    font-size: 16px;
-    margin-left: 10px;
-    cursor: pointer;
+
+/* Stopwatch section */
+.stopwatch {
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 150px;
+    max-height: 200px;
+    padding: 0px;
+    position: relative;
+    width: 85%;
+	height: 100px;
+	
 }
-    .table {
-        grid-template-columns: 1fr auto 1fr;
-        grid-template-rows: repeat(3, auto);
-        padding: 10px 0px 10px 0px;
-        gap: 10px;
+
+/* Stopwatch colors */
+.stopwatch.green {
+    background-color: green;
+}
+
+.stopwatch.red.black {
+    background-color: red;
+    color: white;
+}
+
+.stopwatch.red.white {
+    background-color: red;
+    color: black;
+}
+
+.stopwatch.yellow {
+    background-color: yellow;
+    color: black;
+}
+
+/* Star styles */
+.star {
+    --star-color: lightgray;
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    display: block;
+    font-size: 10em;
+    height: 0px;
+    position: absolute;
+    transform: scale(0.2, 0.2) rotate(35deg);
+    width: 0px;
+}
+
+.star:after {
+    border-bottom: 0.7em solid var(--star-color);
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    left: -1.05em;
+    position: absolute;
+    top: 0.03em;
+    transform: rotate(-70deg);
+    width: 0;
+}
+
+.star:before {
+    border-bottom: 0.8em solid var(--star-color);
+    border-left: 0.3em solid transparent;
+    border-right: 0.3em solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    left: -0.65em;
+    position: absolute;
+    top: -0.45em;
+    transform: rotate(-35deg);
+    width: 0;
+}
+
+/* Main table styling */
+.table {
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr auto 1fr;
+    justify-items: center;
+    max-width: 600px;
+    padding: 5px 0;
+    width: 100%;
+}
+.settings-table {
+	align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    max-width: 600px;
+    padding: 5px 0;
+    width: 100%;
+	font-size: 2em;
+}
+
+.overlay {
+    align-items: center;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+	height: 100%;
+  width: 100%;
+	 position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: white; /* white fallback color */
+  background-color: rgba(255,255,255, 0.96); /* white w/opacity */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.3s; /* transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+/* Time container */
+.time-container {
+    align-items: center;
+    display: flex;
+}
+
+/* Time styles */
+.time {
+    font-size: 1.5em;
+    margin: auto;
+}
+
+/* Message styles */
+.message {
+    font-size: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+/* White background */
+.white {
+	background-color: white;
+    background-color: var(--team1Color);
+    color: black;
+	color: var(--team1fontColor);
+}
+
+/* Black background */
+.black {
+	background-color: black;
+    background-color: var(--team2Color);
+    color: white;
+	color: var(--team2fontColor);
+}
+
+/* Responsive styles  */
+@media (max-width: 600px) {
+   /* #settings-icon {
+        cursor: pointer;
+        font-size: 16px;
+        margin-left: 10px;
     }
-    .stopwatch {
-        max-width: 100px;
-        min-height: 70px; /* Flexibler auf kleinen Bildschirmen */
-        min-padding: 1px;
+
+    .controls {
+        gap: 5px;
     }
-	.controls {
-		/* gap: 5px; */
-	}
+
     .controls button {
         flex: 1;
-        font-size: 12px;
+        font-size: 1em;
+        font-weight: normal;
         height: 35px;
-		font-size: 1em;
-		font-weight: normal;
-		min-width: 25px;
-		max-width: 45px;
-		padding: 1px;
-		
-}
+        max-width: 45px;
+        min-width: 25px;
+        padding: 1px;
+    }
+
     .description {
         font-size: 1em;
-        min-height: 70px; /* Gleiche minimale Höhe wie Stoppuhren auf kleinen Bildschirmen */
-		padding:1px;
+        min-height: 70px;
+        padding: 1px;
     }
-	.description .white {
-		padding:1px;
-	}
-	div.kreis {
-  width: 50px;
-  height: 50px;
-  border-radius: 60px;
-  background-color: lightgrey;
-  line-height:50px;
-  font-size: 1em;
 
+    .description .white {
+        padding: 1px;
+    }
+
+    div.kreis {
+        background-color: lightgrey;
+        border-radius: 60px;
+        font-size: 1em;
+        height: 50px;
+        line-height: 50px;
+        width: 50px;
+    } */
+
+    .footer img {
+        height: 50px;
+        margin-top: 5px;
+        width: 50px;
+    }
+
+   /* .label {
+        background-color: transparent;
+        border-radius: 5px;
+        font-size: 1em;
+        padding: 1px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .star {
+        transform: scale(0.2, 0.2) rotate(35deg);
+    }
+
+    .stopwatch {
+        max-width: 100px;
+        min-height: 70px;
+        min-padding: 1px;
+    }
+
+    .table {
+        gap: 10px;
+        grid-template-columns: 1fr auto 1fr;
+        grid-template-rows: repeat(3, auto);
+        padding: 10px 0;
+    }
+
+    .time {
+        font-size: 1.2em;
+    }
+
+    .message {
+        font-size: 1em;
+        height: 10px;
+        line-height: 10px;
+        margin-bottom: 3px;
+        top: 1px;
+    } */
 }
-.label {
-    position: absolute; /* Ensure the label text is positioned relative to its container */
-    z-index: 1; /* Ensure the label text appears above the star */
-    padding: 1px 1px; /* Add some padding for better spacing */
-    border-radius: 5px; /* Optional: Add border-radius for a rounded corner effect */
-    font-size: 1em; /* Lower font size for better readability */
-    background-color: transparent;
-	}
-.star {
-	transform: scale(0.2, 0.2) rotate(35deg);
-}
-	.time {
-		font-size: 1.2 em;
-	}
-	.footer img {
-    width: 50px;
-    height: 50px;
-    margin-top: 5px;
-}
-.message {
-    font-size: 1em;
-    top: 1px;
-    margin-bottom: 3px;
-    height: 10px; /* Add a fixed height to prevent layout shift */
-    line-height: 10px; /* Center the text vertically */
-}
-}
+
