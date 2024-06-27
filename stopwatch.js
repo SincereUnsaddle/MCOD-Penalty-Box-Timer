@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				 <button class="add-time-button" onclick="addTime('${sw.id}', (30 * timeMultiplier))">+</button>
             </div>
         `;
+		stopwatch.querySelector('.time-container').addEventListener('dblclick', function() {
+            if (!intervals[sw.id]) { // Only allow editing if the stopwatch is stopped
+                editTime(sw.id);
+            }
+        });
     });
     updateMasterButton();
 });
@@ -45,11 +50,36 @@ function toggleStopwatch(id, button) {
         let startTime = Date.now();
 		if (id=='whiteJammer'&&remainingTimes['blackJammer']){ //update jammer time if jammer is in the box
 			remainingTimes['whiteJammer']=(3000 * timeMultiplier)+(-remainingTimes['blackJammer']%(3000 * timeMultiplier));
-			resetStopwatch('blackJammer');
+			const stopwatch = document.getElementById('blackJammer');
+			const messageDiv = stopwatch.querySelector('.message');
+			messageDiv.textContent = 'Go';
+                stopwatch.classList.remove('red');
+                stopwatch.classList.add('green');
+				clearInterval(intervals['blackJammer']);
+        delete intervals['blackJammer'];
+                timeDiv.textContent = '0"0';
+				
+                setTimeout(() => {
+                    resetStopwatch('blackJammer'); // Reset after showing "Go"
+                }, 1000); // Show "Go" for 1 second
+			
 		}
 		if (id=='blackJammer'&&remainingTimes['whiteJammer']){
 			remainingTimes['blackJammer']=(3000 * timeMultiplier)+(-remainingTimes['whiteJammer']%(3000 * timeMultiplier));
-			resetStopwatch('whiteJammer');
+			const stopwatch = document.getElementById('whiteJammer');
+			const messageDiv = stopwatch.querySelector('.message');
+			messageDiv.textContent = 'Go';
+                stopwatch.classList.remove('red');
+				stopwatch.classList.remove('yellow');
+                stopwatch.classList.add('green');
+				clearInterval(intervals['whiteJammer']);
+				
+        delete intervals['whiteJammer'];
+                timeDiv.textContent = '0"0';
+                setTimeout(() => {
+                    resetStopwatch('whiteJammer'); // Reset after showing "Go"
+                }, 1000); // Show "Go" for 1 second
+				
 		}
 		
         if (!remainingTimes[id]) {
@@ -309,4 +339,47 @@ function openNav() {
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
   document.getElementById("settings-menu").style.width = "0%";
+}
+
+function editTime(id) {
+    const stopwatch = document.getElementById(id);
+    const timeDiv = stopwatch.querySelector('.time');
+    const currentTime = parseFloat(timeDiv.textContent.replace('"', '.'));
+
+    // Create input field
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.min = '0';
+    input.step = '0.1';
+    input.value = currentTime.toFixed(1);
+    input.className = 'time-input';
+
+    // Replace time div with input field
+    timeDiv.style.display = 'none';
+    timeDiv.parentNode.appendChild(input);
+
+    // Focus the input field
+    input.focus();
+
+    // Handle input field blur (when user clicks away)
+    input.addEventListener('blur', function() {
+        // Get the new time from the input
+        const newTime = parseFloat(input.value);
+        if (!isNaN(newTime) && newTime >= 0) {
+            // Update the remaining time and display
+            remainingTimes[id] = newTime * 100;
+            timeDiv.textContent = newTime.toFixed(1).replace('.', '"');
+        }
+
+        // Remove the input field and show the time div
+        input.remove();
+        timeDiv.style.display = 'block';
+    });
+
+    // Handle Enter key press
+    input.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            input.blur();
+        }
+    });
 }

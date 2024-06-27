@@ -207,47 +207,25 @@ h1 {
 }
 
 /* Star styles */
+
 .star {
-    --star-color: #f0f0f0;
-    border-bottom: 0.7em solid var(--star-color);
-    border-left: 1em solid transparent;
-    border-right: 1em solid transparent;
-    display: block;
-    font-size: 10em;
-    height: 0px;
-    position: absolute;
-    transform: scale(0.3, 0.3) rotate(35deg);
-    width: 0px;
-}
-
-.star:after {
-    border-bottom: 0.7em solid var(--star-color);
-    border-left: 1em solid transparent;
-    border-right: 1em solid transparent;
-    content: "";
-    display: block;
-    height: 0;
-    left: -1.05em;
-    position: absolute;
-    top: 0.03em;
-    transform: rotate(-70deg);
-    width: 0;
-}
-
-.star:before {
-    border-bottom: 0.8em solid var(--star-color);
-    border-left: 0.3em solid transparent;
-    border-right: 0.3em solid transparent;
-    content: "";
-    display: block;
-    height: 0;
-    left: -0.65em;
-    position: absolute;
-    top: -0.45em;
-    transform: rotate(-35deg);
-    width: 0;
-}
-
+            --star-color: #f0f0f0;
+            width: 70px;
+            height: 70px;
+            background-color: var(--star-color);
+            clip-path: polygon(
+                50% 0%, 
+                61% 35%, 
+                98% 35%, 
+                68% 57%, 
+                79% 91%, 
+                50% 70%, 
+                21% 91%, 
+                32% 57%, 
+                2% 35%, 
+                39% 35%
+            );
+        }
 /* Main table styling */
 .table {
     align-items: center;
@@ -331,6 +309,7 @@ h1 {
     background-color: var(--team2Color);
     color: white;
 	color: var(--team2fontColor);
+	border-color: white;
 }
 div.kreis {
         background-color: #f0f0f0;
@@ -340,6 +319,16 @@ div.kreis {
         line-height: 60px;
         width: 60px;
     }
+
+.time-input {
+    width: 50px;
+    font-size: 1em;
+    text-align: center;
+    padding: 2px;
+    margin: 0 auto;
+    display: block;
+}
+
 
 /* Responsive styles  */
 @media (max-width: 600px) {
